@@ -7,13 +7,14 @@ int main()
   scanf("%d", &venta);
   if(venta <=20000){
       comision= venta*0.05;
-  }if(venta <=50000){
-      comision= venta*0.07+1000;
   }else{
-      comision= venta*0.1+3100;
+          if(venta <=50000){
+               comision= venta*0.07+1000;
+          }else{
+              comision= venta*0.1+3100;
+          }
   }
-    
-      printf("Su comision fue de: %d\n", comision);
-      return comision;
+printf("Su comision fue de: %d\n", comision);
+return comision;
   
 }
