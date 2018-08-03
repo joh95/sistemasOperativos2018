@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 int progres(int a, int b); /* prototipo de funcion */
 
 int main() {
@@ -14,7 +15,7 @@ int main() {
 int progres(int a, int b) /* definicion de la funcion */ {
     int progresion= 1;
     for(int i=1;i<=b;i++){
-        progresion = progresion + (a^i);
+        progresion = progresion + pow(a,i);
     }
     return progresion;
 }
