@@ -1,37 +1,36 @@
 #include <stdio.h>
 #include <math.h>
-// REVISAR !!!!
+float progres(int x, int n); /* prototipo de funcion */
+long factorial(long f);
 
-int potencia(int base, int exponente){
- 
-	if(exponente == 0){
-		return 1;
-	}else{
-		return base*potencia(base,exponente-1);
-	}
+int main() {
+    int x, y;
+    float max;
+    printf("Introduzca X y n, respectivamente: ");
+    scanf("%d %d", &x, &y);
+    max = progres(x, y); /* llamada a la funcion */
+    printf("El resultado de la progresion es= %f \n",max);
+    return 0;
 }
-int serie (int x, int n){
-    double aux =0;
-    int maxExponente=((n-1)*2);
 
-    if(maxExponente==0){
+float progres(int x, int n) /* definicion de la funcion */ {
+    float progresion= 1;
+    for(int i=1;i<n;i++){
+        if(i%2==0){
+            progresion = progresion + pow(x,2*i)/factorial(2*i);
+            printf("%f es positiva  \n",progresion);
+        }else{
+            progresion = progresion - pow(x,2*i)/factorial(2*i);
+            printf("%f es negativa  \n",progresion);
+        }
+        
+    }
+    return progresion;
+}
+
+long factorial(long f)
+{
+    if ( f == 0 ) 
         return 1;
-    }
-    if (n>0){
-       aux = (potencia(x,maxExponente))/maxExponente;
-       //aux2 = potencia(-1,n);
-       return aux + serie(x, maxExponente-2);
-    }
-}
-
-int main(){
-    short suma=0;
-    int number1, number2;
-    printf("Ingrese el primer numero: ");
-    scanf("%d",&number1);
-    printf("Ingrese el segundo numero: ");
-    scanf("%d",&number2);
-
-    suma = serie(number1, number2);
-    printf("La suma de la serie es: %hd \n\n", suma);
+    return(f * factorial(f - 1));
 }
